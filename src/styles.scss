@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 100px 0 0 0;
+}
+
+.cu-p {
+    cursor: pointer;
+}
+
+.mat-mdc-form-field {
+    width: 330px;
+}
+
+h1 {
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 30px;
+}
+
+.redirect {
+    width: 330px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Авторизация</h1>
+    <form [formGroup]="authForm" class="auth-form">
+        <p>
+            <mat-form-field appearance="outline">
+            <mat-label>Введите логин</mat-label>
+            <input formControlName="login" matInput placeholder="temamx">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Введите пароль</mat-label>
+                <input formControlName="password" matInput placeholder="******">
+            </mat-form-field>
+        </p>
+        <button 
+            (click)="onSubmit()"
+            [disabled]="authForm.invalid"
+            color="primary"
+            style="width: 330px; height: 55px; font-size: 18px; line-height: 24px;"
+            mat-raised-button
+          >Войти</button>
+    </form>
+    <div class="redirect">
+        У вас еще нет аккаунта?
+        <a routerLink="registration">Зарегистрироваться</a>
+    </div>
+</div>
