@@ -14,7 +14,7 @@
             </mat-form-field>
         </p>
         <button 
-            (click)="onSubmit()"
+            (click)="logIn(this.authForm.value)"
             [disabled]="authForm.invalid"
             color="primary"
             style="width: 330px; height: 55px; font-size: 18px; line-height: 24px;"

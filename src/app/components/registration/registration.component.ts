@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -7,13 +9,20 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  form: FormGroup;
+  signUpForm: FormGroup;
 
-  constructor(){}
+  constructor(private _router: Router, private _auth: AuthService){}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      
+    this.signUpForm = new FormGroup({
+      login: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
+  }
+
+  public signUp() {
+    this.signUpForm.disable()
+    this._auth.accounts.push(this.signUpForm.value)
+    this._router.navigate(['auth'])
   }
 }

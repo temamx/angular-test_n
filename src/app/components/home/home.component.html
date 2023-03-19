@@ -1,7 +1,16 @@
 <div class="container">
     <h1>Добро пожаловать в личный кабинет!</h1>
     <div class="your-data">
-        Ваш логин для входа: 
-        Ваш пароль для входа: 
+        Ваш логин для входа: {{ userLogin }}
     </div>
+    <h2>Список пользователей:</h2>
+    <ng-container *ngFor="let user of allUsers">
+        {{user.login}} <br>
+    </ng-container>
+    <button 
+        color="primary"
+        mat-raised-button
+        style="width: 330px; height: 65px; font-size: 18px; line-height: 24px; margin-top: 50px;"
+        routerLink="auth"
+    > Вернуться на страницу авторизации</button>
 </div>

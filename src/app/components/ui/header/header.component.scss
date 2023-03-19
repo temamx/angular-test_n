@@ -1,5 +1,18 @@
 .example-spacer {
     flex: 1 1 auto;
+
+    @media (max-width: 768px) {
+        flex: none;
+    }
+}
+
+mat-toolbar-row {
+
+    @media (max-width: 768px) {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .title {
@@ -9,4 +22,18 @@
 
 .registration {
     margin-left: 20px;
+}
+
+.header {
+
+    @media (max-width: 768px) {
+        height: 100px;
+    }
+
+    &__btns {
+
+        @media (max-width: 768px) {
+            margin-top: 15px;
+        }
+    }
 }

@@ -3,14 +3,13 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-}
-
 .container {
     text-align: center;
     padding: 100px 0 0 0;
+
+    @media (max-width: 768px) {
+        padding-top: 50px;
+    }
 }
 
 .cu-p {

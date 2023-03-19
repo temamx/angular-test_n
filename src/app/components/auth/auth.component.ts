@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/types/user.interface';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,9 +10,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  authForm: FormGroup;
+  public authForm: FormGroup;
 
-  constructor(private _auth: AuthService){}
+  constructor(private _router: Router, private _auth: AuthService) {}
 
   ngOnInit(): void {
     this.authForm = new FormGroup({
@@ -19,11 +21,18 @@ export class AuthComponent implements OnInit {
     })
   }
 
-  // onSubmit() {
-  //   this.authForm.disable()
-  //   this._auth.login(this.authForm.value).subscribe({
-  //     next: () => {console.log('Login success')},
-  //     error: (error) => console.warn(error)
-  //   })
-  // }
+  public logIn(user: IUser): void {
+    this.authForm.disable();
+    const { login, password } = user;
+    const isAuth = this._auth.accounts.find(x => x.login === login && x.password === password);
+
+    if (isAuth) {
+      this._auth.isAuthenticated = true;
+      this._router.navigate(['home']);
+      this._auth.successLogin = login;
+    } else {
+      alert("Неверный логин или пароль");
+      this.authForm.enable();
+    }
+  }
 }
