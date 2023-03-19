@@ -20,9 +20,9 @@ export class RegistrationComponent implements OnInit {
     })
   }
 
-  public signUp() {
-    this.signUpForm.disable()
-    this._auth.accounts.push(this.signUpForm.value)
-    this._router.navigate(['auth'])
+  public signUp(): void {
+    this.signUpForm.disable();
+    this._auth.accounts.push(this.signUpForm.value);
+    this._router.navigate(['auth']);
   }
 }
